@@ -6,4 +6,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+/* POST JSON. */
+router.post('/ReceiveJSON', function(req, res){
+  res.send("ok");
+});
+
+
+
 module.exports = router;

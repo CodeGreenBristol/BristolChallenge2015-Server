@@ -18,6 +18,8 @@
     "bcrypt-nodejs" : "*",
     "connect-flash" : "*",
     "consolidate" : "0.10.0",
-    "ejs": "^2.2.3"
+    "ejs": "^2.2.3",
+    "sqlite3": "^3.0.4",
+    "node-fs": "^0.1.7"
   }
 }
