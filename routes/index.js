@@ -11,14 +11,17 @@ router.get('/', function(req, res) {
 });
 
 /* POST JSON. */
-router.post('/ReceiveJSON', function(req, res){
+router.post('/post', function(req, res){
 
+console.log('Request received');
 
-         console.log(req.body);
-        //console.log(req);
-        res.send(req.body);
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    req.on('data', function (chunk) {
+        console.log('GOT DATA!');
+        console.log(chunk.toString('utf8'));
+    });
+    res.end('callback(\'{\"msg\": \"OK\"}\')');
 });
-
 
 
 
