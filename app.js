@@ -9,8 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-var app = express()
+app.use(bodyParser());
 
 var fs = require("fs");
 var file = "data/database.db";
