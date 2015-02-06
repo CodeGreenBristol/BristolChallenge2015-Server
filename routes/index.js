@@ -16,7 +16,7 @@ router.post('/ReceiveJSON', function(req, res){
 
          console.log(req.body);
         //console.log(req);
-        res.render('index', { title: 'Express' });
+        res.send(req.body);
 });
 
 
