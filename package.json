@@ -20,6 +20,8 @@
     "consolidate" : "0.10.0",
     "ejs": "^2.2.3",
     "sqlite3": "^3.0.4",
-    "node-fs": "^0.1.7"
+    "node-fs": "^0.1.7",
+    "querystring": "0.2.0",
+    "url": "0.10.2"
   }
 }
