@@ -24,21 +24,24 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(file);
 
 
-if(!exists) {
-
+//if(!exists) {
     var sql_stmt = "CREATE TABLE points (" +
         "id INTEGER PRIMARY KEY, " +
         "lat REAL, " +
         "lon REAL, " +
-        "weight REAL);";
+        "weight_trees REAL," +
+        "weight_flowers REAL," +
+        "weight_park REAL);";
 
     // we then execute the sql statement
     db.run(sql_stmt, function(err) {
         if(err) throw err;
         console.log("Table 'points' created");
-        db.run('INSERT INTO points VALUES(null,2.32,3.5,4.7)');
+        db.run('INSERT INTO points VALUES(0,1.01,2.02,5,6,7)');
+        db.run('INSERT INTO points VALUES(1,2.01,3.03,10,16,17)');
+        db.run('INSERT INTO points VALUES(2,3.01,4.04,20,26,27)');
     })
-}
+//}
 
 //var mongoose = require('mongoose');
 // Connect to DB
