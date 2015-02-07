@@ -11,47 +11,19 @@ var users = require('./routes/users');
 var app = express();
 app.use(bodyParser.urlencoded());
 
-var fs = require("fs");
-var file = "data/database.db";
-var exists = fs.existsSync(file);
 
-if(!exists) {
-  console.log("Creating DB file.");
-  fs.openSync(file, "w");
-}
-
-var sqlite3 = require("sqlite3").verbose();
-var db = new sqlite3.Database(file);
-
-
-if(!exists) {
-    var sql_stmt = "CREATE TABLE points (" +
-        "id INTEGER PRIMARY KEY, " +
-        "lat INTEGER, " +
-        "lon INTEGER, " +
-        "weight_trees INTEGER," +
-        "weight_flowers INTEGER," +
-        "weight_park INTEGER);";
-
-    // we then execute the sql statement
-    db.run(sql_stmt, function(err) {
-        if(err) throw err;
-        console.log("Table 'points' created");
- 
-    });
-}
 
 var cors = require('cors')
 app.use(cors());
 
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 // Connect to DB
-/*mongoose.connect('mongodb://codegreen:bristolchallenge2015@ds041831.mongolab.com:41831/heroku_app33753543', function(err, db) {
+mongoose.connect('mongodb://codegreen:bristolchallenge2015@ds041831.mongolab.com:41831/heroku_app33753543', function(err, db) {
   if(!err) {
     console.log("We are connected");
   }
   else console.log(err);
-});*/
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -163,4 +163,33 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </div>
     <div id="map-canvas"></div>
   </body>
+
+  <script type="text/javascript">
+ $.ajax({
+                type: 'POST',
+                url: 'http://178.62.54.23:3000/post',
+                data: JSON.stringify([
+  [
+    {"lat": 13, "lon": 42},
+    {"lat": 14, "lon": 43},
+    {"lat": 15, "lon": 44}
+  ],
+ [
+    {"lat": 13, "lon": 42},
+    {"lat": 14, "lon": 43},
+    {"lat": 15, "lon": 44}
+  ]
+]),
+                
+                  contentType: 'text/plain',
+
+        
+                success: function(msg){
+                    alert(JSON.stringify(msg));
+                },
+                error: function(msg,textStatus){
+                    alert(JSON.stringify(msg.status));
+                }
+            });
+</script>
 </html>
