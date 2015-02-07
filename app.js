@@ -12,18 +12,8 @@ var app = express();
 app.use(bodyParser.urlencoded());
 
 
-
 var cors = require('cors')
 app.use(cors());
-
-var mongoose = require('mongoose');
-// Connect to DB
-mongoose.connect('mongodb://codegreen:bristolchallenge2015@ds041831.mongolab.com:41831/heroku_app33753543', function(err, db) {
-  if(!err) {
-    console.log("We are connected");
-  }
-  else console.log(err);
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
