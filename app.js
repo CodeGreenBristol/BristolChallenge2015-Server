@@ -37,11 +37,14 @@ var db = new sqlite3.Database(file);
     db.run(sql_stmt, function(err) {
         if(err) throw err;
         console.log("Table 'points' created");
-        db.run('INSERT INTO points VALUES(0,1.01,2.02,5,6,7)');
-        db.run('INSERT INTO points VALUES(1,2.01,3.03,10,16,17)');
-        db.run('INSERT INTO points VALUES(2,3.01,4.04,20,26,27)');
+        db.run('INSERT INTO points VALUES(0,37.782551,-122.445368,5,6,7)');
+        db.run('INSERT INTO points VALUES(1,37.783357,-122.4387,10,16,17)');
+        db.run('INSERT INTO points VALUES(2,37.783383,-122.4395,20,26,27)');
     })
 //}
+
+var cors = require('cors')
+app.use(cors());
 
 //var mongoose = require('mongoose');
 // Connect to DB
