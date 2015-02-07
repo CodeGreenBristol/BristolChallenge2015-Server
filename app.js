@@ -36,10 +36,9 @@ if(!exists) {
     db.run(sql_stmt, function(err) {
         if(err) throw err;
         console.log("Table 'points' created");
-        db.run('INSERT INTO points VALUES(0,2.32,3.5,4.7)');
+        db.run('INSERT INTO points VALUES(null,2.32,3.5,4.7)');
     })
 }
-
 
 //var mongoose = require('mongoose');
 // Connect to DB

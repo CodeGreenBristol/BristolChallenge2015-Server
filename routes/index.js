@@ -5,9 +5,25 @@ var url = require( "url" );
 var queryString = require( "querystring" );
 var request = require( "request" );
 
+var file = "data/database.db";
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database(file);
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
+});
+
+
+router.get('/getdata', function(req, res) {
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    db.all("SELECT * FROM points;", function(err,data) {
+        console.log(data);
+        res.end(JSON.stringify(data));
+    });
+
+    //res.end("test");
 });
 
 /* POST JSON. */
