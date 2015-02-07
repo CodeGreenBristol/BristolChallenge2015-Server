@@ -24,24 +24,22 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(file);
 
 
-//if(!exists) {
+if(!exists) {
     var sql_stmt = "CREATE TABLE points (" +
         "id INTEGER PRIMARY KEY, " +
-        "lat REAL, " +
-        "lon REAL, " +
-        "weight_trees REAL," +
-        "weight_flowers REAL," +
-        "weight_park REAL);";
+        "lat INTEGER, " +
+        "lon INTEGER, " +
+        "weight_trees INTEGER," +
+        "weight_flowers INTEGER," +
+        "weight_park INTEGER);";
 
     // we then execute the sql statement
     db.run(sql_stmt, function(err) {
         if(err) throw err;
         console.log("Table 'points' created");
-        db.run('INSERT INTO points VALUES(0,37.782551,-122.445368,5,6,7)');
-        db.run('INSERT INTO points VALUES(1,37.783357,-122.4387,10,16,17)');
-        db.run('INSERT INTO points VALUES(2,37.783383,-122.4395,20,26,27)');
-    })
-//}
+ 
+    });
+}
 
 var cors = require('cors')
 app.use(cors());
