@@ -25,7 +25,9 @@ router.get('/getdata', function(req, res) {
     var db = monk('localhost:27017/new');
     var collection = db.get('points');
     res.writeHead(200, {"Content-Type": "application/json"});
-    collection.find({}, function(err, docs) {
+    collection.find({
+//$or:[ {"weight_tree":{$gt: 2}},{"weight_flower":{$gt: 2}},{"weight_park":{$gt: 2}}]
+}, function(err, docs) {
         res.end(JSON.stringify(docs));
         db.close();
     });
@@ -73,7 +75,6 @@ router.post('/post',bodyParser(), function(req, res){
     var monk = require('monk');
     var db = monk('localhost:27017/new');
     var collection = db.get('points');
-    res.writeHead(200, { 'Content-Type': 'application/json' });
     req.on('data', function (chunk) {
         console.log('GOT DATA!');
         //console.log(chunk.toString('utf8'));
@@ -90,12 +91,12 @@ router.post('/post',bodyParser(), function(req, res){
             }
             console.log(shape);
             var allPoints = p2m(shape.points);
-            console.log(allPoints);
+            //console.log(allPoints);
             console.log(allPoints.length);
             for(j in allPoints){
                 point = allPoints[j];
                 var wt=0;
-                console.log(shape.type);
+              //  console.log(shape.type);
                 if(shape.type==0) collection.update(
                 {
                     "lat": point.lat,
@@ -130,6 +131,7 @@ router.post('/post',bodyParser(), function(req, res){
         }
 
     });
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end('callback(\'{\"msg\": \"OK\"}\')');
 });
 
